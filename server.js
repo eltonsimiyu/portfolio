@@ -20,14 +20,15 @@ app.use(helmet()); // Secure HTTP headers
 app.use(compression()); // Enable GZIP compression
 app.use(bodyParser.json());
 
+
 // MySQL Database Connection
 const db = mysql.createConnection({
-    host: process.env.DB_HOST || 'mysql.railway.internal',  // Railway MySQL Host
-    user: process.env.DB_USER || 'root',                     // Railway MySQL User
-    password: process.env.DB_PASSWORD || 'DjolJjRmvQaDBDJkvrYoVwaOjxoJjvRH', // Railway Password
-    database: process.env.DB_NAME || 'railway',              // Railway Database Name
-    port: process.env.DB_PORT || 3306,                      // Railway MySQL Port (Default 3306)
-    multipleStatements: true // Allows multiple SQL queries in one request
+    host: process.env.DB_HOST || 'yamanote.proxy.rlwy.net',  // ✅ Use Railway Public Proxy Host
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || 'DjolJjRmvQaDBDJkvrYoVwaOjxoJjvRH',
+    database: process.env.DB_NAME || 'railway',
+    port: process.env.DB_PORT || 27579, // ✅ Use Railway's provided port (not 3306)
+    multipleStatements: true
 });
 
 // ✅ Connect to the Database

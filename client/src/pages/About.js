@@ -11,15 +11,15 @@ const AboutMe = () => {
     useEffect(() => {
         // Initialize AOS for animations
         AOS.init({ duration: 1000 });
-
-        // Fetch data from backend
-        axios.get('http://localhost:5000/api/about')
+    
+        // Fetch data from backend using environment variable
+        axios.get(`${process.env.REACT_APP_API_URL}/api/about`)
             .then(response => {
                 setAbout(response.data.about);
                 setEducation(response.data.education || []);
                 setExperience(response.data.experience || []);
             })
-            .catch(error => console.error(error));
+            .catch(error => console.error("API Error:", error));
     }, []);
 
     return (

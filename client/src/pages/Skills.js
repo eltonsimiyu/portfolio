@@ -12,7 +12,7 @@ const Skills = () => {
         AOS.init({ duration: 1000 });
 
         // Fetch skills data from the backend
-        axios.get('http://localhost:5000/api/skills')
+        axios.get(`${process.env.REACT_APP_API_URL}/api/skills`)
             .then(response => setSkills(response.data))
             .catch(error => console.error(error));
     }, []);
@@ -125,7 +125,7 @@ const Skills = () => {
             {/* Download Skills Button */}
             <div className="text-center mt-5">
                 <a
-                    href="http://localhost:5000/api/download-skills"
+                     href={`${process.env.REACT_APP_API_URL}/api/download-skills`}
                     className="btn btn-primary"
                 >
                     Download Skills as CSV

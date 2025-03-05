@@ -5,7 +5,7 @@ const AboutMe = () => {
     const [about, setAbout] = useState({});
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/about')
+        axios.get(`${process.env.REACT_APP_API_URL}/api/about`)
             .then(response => setAbout(response.data))
             .catch(error => console.error(error));
     }, []);

@@ -5,7 +5,7 @@ const Skills = () => {
     const [skills, setSkills] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/skills')
+        axios.get(`${process.env.REACT_APP_API_URL}/api/skills`)
             .then(response => setSkills(response.data))
             .catch(error => console.error(error));
     }, []);

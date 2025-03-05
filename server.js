@@ -20,7 +20,14 @@ app.use(helmet()); // Secure HTTP headers
 app.use(compression()); // Enable GZIP compression
 app.use(bodyParser.json());
 
+const corsOptions = {
+    origin: 'http://localhost:3000', // Replace with your frontend URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Allow cookies and credentials
+    allowedHeaders: 'Content-Type, Authorization'
+};
 
+app.use(cors(corsOptions));
 // MySQL Database Connection
 const db = mysql.createConnection({
     host: process.env.DB_HOST || 'yamanote.proxy.rlwy.net',  // ✅ Use Railway Public Proxy Host

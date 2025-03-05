@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 const db = mysql.createConnection({
     host: process.env.DB_HOST || 'yamanote.proxy.rlwy.net',  // ✅ Use Railway Public Proxy Host
     user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || 'DjolJjRmvQaDBDJkvrYoVwaOjxoJjvRH',
+    password: process.env.DB_PASSWORD || 'YourNewSecurePassword',
     database: process.env.DB_NAME || 'railway',
     port: process.env.DB_PORT || 27579, // ✅ Use Railway's provided port (not 3306)
     multipleStatements: true

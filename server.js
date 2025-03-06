@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
+const cors = require('cors'); // ✅ Keep this only once
 const mysql = require('mysql2');
 const fastCsv = require('fast-csv');
 const nodemailer = require('nodemailer');
@@ -15,11 +15,10 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors()); // ✅ Apply CORS once here
 app.use(helmet()); // Secure HTTP headers
 app.use(compression()); // Enable GZIP compression
 app.use(bodyParser.json());
-const cors = require('cors');
 
 app.use(helmet({
     contentSecurityPolicy: {
@@ -28,8 +27,9 @@ app.use(helmet({
         connectSrc: ["'self'", "https://portfolio-production-b693.up.railway.app"],
       },
     },
-  }));
-  const corsOptions = {
+}));
+
+const corsOptions = {
     origin: 'https://portfolio-production-b693.up.railway.app', // ✅ Allow frontend to access backend
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // ✅ Allow cookies and authentication credentials
@@ -37,6 +37,7 @@ app.use(helmet({
 };
 
 app.use(cors(corsOptions)); // ✅ Apply only once
+
 
 // MySQL Database Connection
 const db = mysql.createConnection({

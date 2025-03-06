@@ -12,7 +12,9 @@ const Skills = () => {
         AOS.init({ duration: 1000 });
 
         // Fetch skills data from the backend
-        axios.get(`${process.env.REACT_APP_API_URL}/api/skills`)
+        const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
+
+        axios.get(`${API_URL}/api/skills`)
             .then(response => setSkills(response.data))
             .catch(error => console.error(error));
     }, []);

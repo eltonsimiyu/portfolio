@@ -13,7 +13,9 @@ const AboutMe = () => {
         AOS.init({ duration: 1000 });
     
         // Fetch data from backend using environment variable
-        axios.get(`${process.env.REACT_APP_API_URL}/api/about`)
+        const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
+
+        axios.get(`${API_URL}/api/about`)
             .then(response => {
                 setAbout(response.data.about);
                 setEducation(response.data.education || []);

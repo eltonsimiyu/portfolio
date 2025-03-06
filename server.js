@@ -35,15 +35,8 @@ app.use(bodyParser.json());
 //         },
 //       },
 //     })
-//   );
-const corsOptions = {
-    origin: ['https://portfolio-production-b693.up.railway.app','https://yamanote.proxy.rlwy.net'], // ✅ Allow frontend to access backend
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // ✅ Allow cookies and authentication credentials
-    allowedHeaders: 'Content-Type, Authorization'
-};
-
-app.use(cors(corsOptions)); // ✅ Apply only once
+//   ); 
+app.use(cors({ origin: "*" }));
 
 
 // MySQL Database Connection

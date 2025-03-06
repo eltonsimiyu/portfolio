@@ -16,26 +16,26 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors()); // ✅ Apply CORS once here
-app.use(helmet()); // Secure HTTP headers
+//app.use(helmet()); // Secure HTTP headers
 app.use(compression()); // Enable GZIP compression
 app.use(bodyParser.json());
 
-app.use(
-    helmet({
-      contentSecurityPolicy: {
-        directives: {
-          defaultSrc: ["'self'"],
-          connectSrc: [
-            "'self'", 
-            "https://yamanote.proxy.rlwy.net",  // Allow proxy URL
-            "https://portfolio-production-b693.up.railway.app", // Allow direct Railway URL
-          ],
-          scriptSrc: ["'self'", "'unsafe-inline'"],
-          styleSrc: ["'self'", "https:", "'unsafe-inline'"],
-        },
-      },
-    })
-  );
+// app.use(
+//     helmet({
+//       contentSecurityPolicy: {
+//         directives: {
+//           defaultSrc: ["'self'"],
+//           connectSrc: [
+//             "'self'", 
+//             "https://yamanote.proxy.rlwy.net",  // Allow proxy URL
+//             "https://portfolio-production-b693.up.railway.app", // Allow direct Railway URL
+//           ],
+//           scriptSrc: ["'self'", "'unsafe-inline'"],
+//           styleSrc: ["'self'", "https:", "'unsafe-inline'"],
+//         },
+//       },
+//     })
+//   );
 const corsOptions = {
     origin: ['https://portfolio-production-b693.up.railway.app','https://yamanote.proxy.rlwy.net'], // ✅ Allow frontend to access backend
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',

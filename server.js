@@ -21,20 +21,22 @@ app.use(compression()); // Enable GZIP compression
 app.use(bodyParser.json());
 const cors = require('cors');
 
-app.use(cors({
-  origin: 'https://portfolio-production-b693.up.railway.app', // ✅ Allow frontend to access backend
-  methods: 'GET,POST,PUT,DELETE',
-  credentials: true
-}));
-
-const corsOptions = {
-    origin: 'https://portfolio-production-b693.up.railway.app', // Replace with your frontend URL
+app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        connectSrc: ["'self'", "https://portfolio-production-b693.up.railway.app"],
+      },
+    },
+  }));
+  const corsOptions = {
+    origin: 'https://portfolio-production-b693.up.railway.app', // ✅ Allow frontend to access backend
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Allow cookies and credentials
+    credentials: true, // ✅ Allow cookies and authentication credentials
     allowedHeaders: 'Content-Type, Authorization'
 };
 
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); // ✅ Apply only once
 
 // MySQL Database Connection
 const db = mysql.createConnection({

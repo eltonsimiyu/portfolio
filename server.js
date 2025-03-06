@@ -25,14 +25,17 @@ app.use(
       contentSecurityPolicy: {
         directives: {
           defaultSrc: ["'self'"],
-          connectSrc: ["'self'", "https://yamanote.proxy.rlwy.net"], // Allow requests to the proxy URL
+          connectSrc: [
+            "'self'", 
+            "https://yamanote.proxy.rlwy.net",  // Allow proxy URL
+            "https://portfolio-production-b693.up.railway.app", // Allow direct Railway URL
+          ],
           scriptSrc: ["'self'", "'unsafe-inline'"],
           styleSrc: ["'self'", "https:", "'unsafe-inline'"],
         },
       },
     })
   );
-
 const corsOptions = {
     origin: ['https://portfolio-production-b693.up.railway.app','https://yamanote.proxy.rlwy.net'], // ✅ Allow frontend to access backend
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',

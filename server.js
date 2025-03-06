@@ -21,7 +21,7 @@ app.use(compression()); // Enable GZIP compression
 app.use(bodyParser.json());
 
 const corsOptions = {
-    origin: 'http://localhost:3000', // Replace with your frontend URL
+    origin: 'https://portfolio-production-b693.up.railway.app', // Replace with your frontend URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Allow cookies and credentials
     allowedHeaders: 'Content-Type, Authorization'
@@ -30,11 +30,11 @@ const corsOptions = {
 app.use(cors(corsOptions));
 // MySQL Database Connection
 const db = mysql.createConnection({
-    host: process.env.DB_HOST || 'yamanote.proxy.rlwy.net',  // ✅ Use Railway Public Proxy Host
+    host: process.env.DB_HOST || 'mysql.railway.internal',  // ✅ Use Railway Public Proxy Host
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || 'YourNewSecurePassword',
     database: process.env.DB_NAME || 'railway',
-    port: process.env.DB_PORT || 27579, // ✅ Use Railway's provided port (not 3306)
+    port: process.env.DB_PORT || 3306, // ✅ Use Railway's provided port (not 3306)
     multipleStatements: true
 });
 

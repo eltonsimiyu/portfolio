@@ -19,6 +19,13 @@ app.use(cors());
 app.use(helmet()); // Secure HTTP headers
 app.use(compression()); // Enable GZIP compression
 app.use(bodyParser.json());
+const cors = require('cors');
+
+app.use(cors({
+  origin: 'https://portfolio-production-b693.up.railway.app', // ✅ Allow frontend to access backend
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true
+}));
 
 const corsOptions = {
     origin: 'https://portfolio-production-b693.up.railway.app', // Replace with your frontend URL
@@ -28,6 +35,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
 // MySQL Database Connection
 const db = mysql.createConnection({
     host: process.env.DB_HOST || 'mysql.railway.internal',  // ✅ Use Railway Public Proxy Host

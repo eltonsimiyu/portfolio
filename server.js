@@ -20,17 +20,21 @@ app.use(helmet()); // Secure HTTP headers
 app.use(compression()); // Enable GZIP compression
 app.use(bodyParser.json());
 
-app.use(helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        connectSrc: ["'self'", "https://portfolio-production-b693.up.railway.app"],
+app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          defaultSrc: ["'self'"],
+          connectSrc: ["'self'", "https://yamanote.proxy.rlwy.net"], // Allow requests to the proxy URL
+          scriptSrc: ["'self'", "'unsafe-inline'"],
+          styleSrc: ["'self'", "https:", "'unsafe-inline'"],
+        },
       },
-    },
-}));
+    })
+  );
 
 const corsOptions = {
-    origin: 'https://portfolio-production-b693.up.railway.app', // ✅ Allow frontend to access backend
+    origin: ['https://portfolio-production-b693.up.railway.app','https://yamanote.proxy.rlwy.net'], // ✅ Allow frontend to access backend
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // ✅ Allow cookies and authentication credentials
     allowedHeaders: 'Content-Type, Authorization'
@@ -41,11 +45,11 @@ app.use(cors(corsOptions)); // ✅ Apply only once
 
 // MySQL Database Connection
 const db = mysql.createConnection({
-    host: process.env.DB_HOST || 'mysql.railway.internal',  // ✅ Use Railway Public Proxy Host
+    host: process.env.DB_HOST || 'yamanote.proxy.rlwy.net',  // ✅ Use Railway Public Proxy Host
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || 'YourNewSecurePassword',
     database: process.env.DB_NAME || 'railway',
-    port: process.env.DB_PORT || 3306, // ✅ Use Railway's provided port (not 3306)
+    port: process.env.DB_PORT || 27579, // ✅ Use Railway's provided port (not 3306)
     multipleStatements: true
 });
 

@@ -181,14 +181,14 @@ const AboutMe = () => {
                         </div>
                         <div className="modal-body">
                             <iframe
-                                src="./Elton_Simiyu_CV.pdf"
+                                src="./Elton Simiyu-cv.pdf"
                                 title="CV"
                                 width="100%"
                                 height="500px"
                             ></iframe>
                         </div>
                         <div className="modal-footer">
-                            <a href="./Elton_Simiyu_CV.pdf" download className="btn btn-primary">
+                            <a href="./Elton Simiyu-cv.pdf" download className="btn btn-primary">
                                 Download My CV
                             </a>
                         </div>

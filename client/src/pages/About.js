@@ -11,7 +11,7 @@ const AboutMe = () => {
     useEffect(() => {
         // Initialize AOS for animations
         AOS.init({ duration: 1000 });
-    
+
         // Fetch data from backend using environment variable
         const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
 
@@ -28,15 +28,17 @@ const AboutMe = () => {
         <div className="container mt-5">
             {/* About Section */}
             <div className="card shadow-lg mb-5" data-aos="fade-up">
+
                 <div className="row g-0">
                     {/* Profile Image */}
                     <div className="col-md-4">
                         <img
-                            src={about?.profilePicture || "./elt.JPG"}
+                            src={`${process.env.PUBLIC_URL}/${about?.profilePicture || "elt.JPG"}`}
                             alt={about?.name || "Profile"}
                             className="img-fluid rounded-start"
                             loading="lazy"
                         />
+
                     </div>
 
                     {/* About Details */}
@@ -83,7 +85,7 @@ const AboutMe = () => {
                                 className="btn btn-primary mt-4"
                                 data-bs-toggle="modal"
                                 data-bs-target="#cvModal">
-                                  View My CV
+                                View My CV
                             </button>
                         </div>
                     </div>
@@ -181,14 +183,14 @@ const AboutMe = () => {
                         </div>
                         <div className="modal-body">
                             <iframe
-                                src="./Elton Simiyu-cv.pdf"
+                                src={`${process.env.PUBLIC_URL}/Elton_Simiyu_cv.pdf`}
                                 title="CV"
                                 width="100%"
                                 height="500px"
                             ></iframe>
                         </div>
                         <div className="modal-footer">
-                            <a href="./Elton Simiyu-cv.pdf" download className="btn btn-primary">
+                            <a href={`${process.env.PUBLIC_URL}/Elton_Simiyu_cv.pdf`} download className="btn btn-primary">
                                 Download My CV
                             </a>
                         </div>

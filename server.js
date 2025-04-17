@@ -142,6 +142,8 @@ app.post('/api/send-email', (req, res) => {
             pass: process.env.EMAIL_PASSWORD // Your email password
         }
     });
+    console.log("EMAIL_USER:", process.env.EMAIL_USER);
+    console.log("EMAIL_PASSWORD:", process.env.EMAIL_PASSWORD ? "✅ Present" : "❌ Missing");
 
     const mailOptions = {
         from: email,

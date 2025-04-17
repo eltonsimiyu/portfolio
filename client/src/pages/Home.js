@@ -6,7 +6,7 @@ const Home = () => {
             <div className="bg-primary text-white text-center py-5">
                 <div className="container">
                     <img
-                        src="./elt.JPG"
+                        src={`${process.env.PUBLIC_URL}/elt.JPG`}
                         alt="Profile"
                         className="img-fluid rounded-circle mb-4"
                         style={{ width: '150px', height: '150px', objectFit: 'cover' }}

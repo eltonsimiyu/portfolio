@@ -18,3 +18,7 @@
   font-weight: bold;
   color: #ffc107 !important;
 }
+
+html {
+  scroll-behavior: smooth;
+}

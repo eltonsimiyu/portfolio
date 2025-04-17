@@ -136,7 +136,11 @@ app.post('/api/send-email', (req, res) => {
 
     const transporter = nodemailer.createTransport({
         service: 'Gmail',
-
+        // auth: {
+        //     user: 'eltonsimiyu99@gmail.com',
+        //     pass: 'gvdcqnluksbdeogs'
+        // }
+        
         auth: {
             user: process.env.EMAIL_USER, // Your email address
             pass: process.env.EMAIL_PASSWORD // Your email password
@@ -158,6 +162,14 @@ app.post('/api/send-email', (req, res) => {
             return res.status(500).send('Failed to send email.');
         }
         res.status(200).send('Email sent successfully.');
+        transporter.sendMail(mailOptions, (err, info) => {
+            if (err) {
+                console.error("❌ Email Error:", err.message);
+                return res.status(500).send('Failed to send email.');
+            }
+            console.log("✅ Email sent:", info.response);
+            res.status(200).send('Email sent successfully.');
+        });
     });
 });
 

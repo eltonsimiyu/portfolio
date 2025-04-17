@@ -9,13 +9,12 @@ const Home = () => {
                 style={{
                     minHeight: '100vh',
                     background: 'linear-gradient(135deg, #0d6efd, #6610f2)',
-                    textAlign: 'center',
                     padding: '2rem',
                 }}
             >
-                <div>
+                <div style={{ maxWidth: '700px', textAlign: 'center' }}>
                     <img
-                        src={`${process.env.PUBLIC_URL}/elt.jpg`}
+                        src={`${process.env.PUBLIC_URL}/elt.jpg` || "/portfolio/elt.jpg"}
                         alt="Profile"
                         className="img-fluid rounded-circle mb-4 shadow"
                         style={{
@@ -25,10 +24,10 @@ const Home = () => {
                             border: '4px solid white',
                         }}
                     />
-                    <h1 className="display-4 fw-bold">Hi, I'm Elton Simiyu</h1>
+                    <h1 className="display-5 fw-bold">Hi, I'm Elton Simiyu</h1>
                     <p className="lead mb-4">
-                        I'm a dedicated Computer Scientist and Developer who loves turning ideas into impactful solutions.
-                        Blending creativity and logic, I approach every challenge with curiosity and a drive to keep learning and growing.
+                        A passionate Computer Scientist and Developer turning ideas into impact. I build efficient,
+                        elegant software solutions and love solving real-world problems through code.
                     </p>
                     <a
                         href="#about"

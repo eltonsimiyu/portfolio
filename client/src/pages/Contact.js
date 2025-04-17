@@ -12,17 +12,18 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
-
-        axios.post(`${API_URL}/api/contact`)
-            .then(() => {
-                setResponseMessage('Message sent successfully!');
-                setFormData({ name: '', email: '', message: '' });
-            })
-            .catch(() => {
-                setResponseMessage('Failed to send message.');
-            });
-    };
+        const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8080";
+      
+        axios.post(`${API_URL}/api/contact`, formData)
+          .then(() => {
+            setResponseMessage('Message sent successfully!');
+            setFormData({ name: '', email: '', message: '' });
+          })
+          .catch(() => {
+            setResponseMessage('Failed to send message.');
+          });
+      };
+      
 
     return (
         <div className="container mt-5">

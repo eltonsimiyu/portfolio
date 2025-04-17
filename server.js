@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer');
 const helmet = require('helmet');
 const compression = require('compression');
 const dotenv = require('dotenv');
-require('dotenv').config(); 
+require('dotenv').config();
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -136,6 +136,7 @@ app.post('/api/send-email', (req, res) => {
 
     const transporter = nodemailer.createTransport({
         service: 'Gmail',
+
         auth: {
             user: process.env.EMAIL_USER, // Your email address
             pass: process.env.EMAIL_PASSWORD // Your email password

@@ -33,7 +33,7 @@ const AboutMe = () => {
                     {/* Profile Image */}
                     <div className="col-md-4">
                         <img
-                            src={`${process.env.PUBLIC_URL}/${about?.profilePicture || "elt.JPG"}`}
+                            src={`${process.env.PUBLIC_URL}/${about?.profilePicture || "elt.jpg"}` || "/portfolio/elt.jpg"}
                             alt={about?.name || "Profile"}
                             className="img-fluid rounded-start"
                             loading="lazy"

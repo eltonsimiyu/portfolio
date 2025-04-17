@@ -15,7 +15,7 @@ const Home = () => {
             >
                 <div>
                     <img
-                        src={`${process.env.PUBLIC_URL}/elt.JPG`}
+                        src={`${process.env.PUBLIC_URL}/elt.jpg`}
                         alt="Profile"
                         className="img-fluid rounded-circle mb-4 shadow"
                         style={{

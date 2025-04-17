@@ -1,14 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
 import Skills from './pages/Skills';
 import Contact from './pages/Contact';
-import Footer from './components/Footer'; // New Footer Component
+import Footer from './components/Footer';
 
 const App = () => {
     return (
-        <Router>
+        <>
             {/* Navbar */}
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div className="container">
@@ -32,8 +32,7 @@ const App = () => {
                                 <NavLink
                                     className="nav-link"
                                     to="/"
-                                    exact="true"
-                                    activeclassname="active"
+                                    end
                                 >
                                     Home
                                 </NavLink>
@@ -42,7 +41,6 @@ const App = () => {
                                 <NavLink
                                     className="nav-link"
                                     to="/about"
-                                    activeclassname="active"
                                 >
                                     About Me
                                 </NavLink>
@@ -51,7 +49,6 @@ const App = () => {
                                 <NavLink
                                     className="nav-link"
                                     to="/skills"
-                                    activeclassname="active"
                                 >
                                     Skills
                                 </NavLink>
@@ -60,7 +57,6 @@ const App = () => {
                                 <NavLink
                                     className="nav-link"
                                     to="/contact"
-                                    activeclassname="active"
                                 >
                                     Contact
                                 </NavLink>
@@ -78,9 +74,8 @@ const App = () => {
                 <Route path="/contact" element={<Contact />} />
             </Routes>
 
-            {/* Footer */}
             <Footer />
-        </Router>
+        </>
     );
 };
 

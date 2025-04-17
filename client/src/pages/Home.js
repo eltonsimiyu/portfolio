@@ -7,14 +7,14 @@ const Home = () => {
             <div
                 className="d-flex align-items-center justify-content-center text-white"
                 style={{
-                    minHeight: '100vh',
-                    background: 'linear-gradient(135deg, #0d6efd, #6610f2)',
-                    padding: '2rem',
-                }}
+                    backgroundColor: '#f8f9fa', 
+                    paddingTop: '4rem',
+                    paddingBottom: '4rem',
+                  }}
             >
                 <div style={{ maxWidth: '700px', textAlign: 'center' }}>
                     <img
-                        src={`${process.env.PUBLIC_URL}/elt.jpg` || "/portfolio/elt.jpg"}
+                        src={`${process.env.PUBLIC_URL}/elt.jpg` || ""}
                         alt="Profile"
                         className="img-fluid rounded-circle mb-4 shadow"
                         style={{

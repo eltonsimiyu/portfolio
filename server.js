@@ -77,8 +77,9 @@ app.get('/api/about', (req, res) => {
 
 // 2. Skills Data
 app.get('/api/skills', (req, res) => {
-    const technicalSkillsQuery = 'SELECT * FROM technical_skills';
-    const softSkillsQuery = 'SELECT * FROM soft_skills';
+    const technicalSkillsQuery = 'SELECT skill_name, category, proficiency FROM technical_skills';
+    const softSkillsQuery = 'SELECT skill_name, proficiency FROM soft_skills';
+
 
     db.query(`${technicalSkillsQuery}; ${softSkillsQuery}`, (err, results) => {
         if (err) return res.status(500).send(err);
@@ -140,7 +141,7 @@ app.post('/api/send-email', (req, res) => {
         //     user: 'eltonsimiyu99@gmail.com',
         //     pass: 'gvdcqnluksbdeogs'
         // }
-        
+
         auth: {
             user: process.env.EMAIL_USER, // Your email address
             pass: process.env.EMAIL_PASSWORD // Your email password
